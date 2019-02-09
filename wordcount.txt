@@ -1,0 +1,119 @@
+def clr():                               #clear function
+    b=e1.delete(0,END)
+    a=e2.delete(0,END)
+    c=e3.delete(0,END)
+    d=e4.delete(0,END)
+def ex():                                 #exit function
+    root.destroy()
+def co():                                #count function
+    a=e2.get()
+    c=e3.get()
+    count=0
+    k=0
+    for i in a:                           
+        d=a.split(' ')                    #split the string by " " spaces
+    if(d[k]=='.'):                         #find and remove full stops
+        d.remove('.')
+    elif(d[k]==','):                       #find and remove comas
+        d.remove(',')
+    elif(d[k]==''):                        #find and remove empty spaces
+        d.remove('')
+    else:
+        while(k<len(d)):                             #while loop to stop check loop in range
+            if(d[k]==c):                              #check the input word with the list
+                count=count+1                           #increase the count value every time a match is found
+            k=k+1                                              #increase the k value by 1
+    e1.insert(0,'number of words '+str(len(d)))              #insert the word count in the text feild 1
+    if(c==''):                                               #check wether the user has entered any word or it is empty
+        e4.insert(0,'no word entered')
+    elif(count==0):                                           #if no words matchs with the searched word
+        e4.insert(END,'no word found')
+    else:                                                      #for every other matched word
+        e4.insert(0,'Number of '' '+c+' '' is '+str(count))
+
+from tkinter import*                                              #import the libraries of tinker for the GUI
+root=Tk()
+root.wm_iconbitmap(r'path of the icon')                               #put the path of the icon if you want to put it in your GUI it is optional
+
+root.title('word count')                                          #title of the GUI
+
+
+f10=Frame(root,bg='#4650A8',height=5)                              
+f10.pack(side=TOP,expand=TRUE,fill=BOTH)
+
+
+#enter the text
+
+f3=Frame(root,bg='#4650A8')
+f3.pack(side=TOP,expand=TRUE,fill=BOTH)
+l3=Label(f3,width=30,text='Enter Text',bg='black',fg='yellow')
+l3.pack(side=LEFT,fill=BOTH,padx=20)
+e2=Entry(f3,width=30,bg='white')
+e2.pack(side=RIGHT,padx=20)
+f10=Frame(root,bg='#4650A8',height=5)
+f10.pack(side=TOP,expand=TRUE,fill=BOTH)
+
+
+##enter specific word
+
+f1=Frame(root,bg='#4650A8')
+f1.pack(side=TOP,expand=TRUE,fill=BOTH)
+l2=Label(f1,width=30,text='Enter word',bg='black',fg='yellow')
+l2.pack(side=LEFT,fill=BOTH,padx=20)
+e3=Entry(f1,width=30,bg='white')
+e3.pack(side=RIGHT,padx=20)
+f10=Frame(root,bg='#4650A8',height=5)
+f10.pack(side=TOP,expand=TRUE,fill=BOTH)
+
+
+##word count
+
+f1=Frame(root,bg='#4650A8')
+f1.pack(side=TOP,expand=TRUE,fill=BOTH)
+l1=Label(f1,width=30,text='Word Count',bg='black',fg='red')
+l1.pack(side=LEFT,fill=BOTH,padx=20)
+e1=Entry(f1,width=30,bg='cyan')
+e1.pack(side=RIGHT,padx=20)
+f10=Frame(root,bg='#4650A8',height=5)
+f10.pack(side=TOP,expand=TRUE,fill=BOTH)
+
+
+#output of searched word
+
+f1=Frame(root,bg='#4650A8')
+f1.pack(side=TOP,expand=TRUE,fill=BOTH)
+l1=Label(f1,width=30,text='Searched word',bg='black',fg='red')
+l1.pack(side=LEFT,fill=BOTH,padx=20)
+e4=Entry(f1,width=30,bg='cyan')
+e4.pack(side=RIGHT,padx=20)
+f10=Frame(root,bg='#4650A8',height=5)
+f10.pack(side=TOP,expand=TRUE,fill=BOTH)
+
+
+
+#creating buttons
+
+f4=Frame(root,bg='#4650A8')
+f4.pack(side=TOP,expand=TRUE,fill=BOTH)
+
+#button for count
+b2=Button(f4,text='Count',bg='yellow',fg='red',font=20,bd=5,command=co)
+b2.pack(side=LEFT,fill=BOTH,expand=TRUE,padx=20)
+
+#button for exit
+b4=Button(f4,text='Exit',bg='yellow',fg='red',font=20,bd=5,command=ex)
+b4.pack(side=RIGHT,fill=BOTH,expand=TRUE,padx=20)
+
+#button for clear
+b3=Button(f4,text='Clear',bg='yellow',fg='red',font=20,bd=5,command=clr)
+b3.pack(side=RIGHT,fill=BOTH,expand=TRUE,padx=20)
+
+f10=Frame(root,bg='#4650A8',height=8)
+f10.pack(side=TOP,expand=TRUE,fill=BOTH)
+
+root.mainloop()
+
+
+
+
+
